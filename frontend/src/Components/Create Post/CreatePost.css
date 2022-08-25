@@ -1,0 +1,18 @@
+.postdiv{
+    display: flex;
+}
+.previewImage{
+    position: relative;
+}
+.previewImage>svg{
+    position:absolute;
+    right: 0.5rem;
+    top:0.5rem;
+    cursor: pointer;
+}
+.previewImage>img{
+    width:100%;
+    max-height:20rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}

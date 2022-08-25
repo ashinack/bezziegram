@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Story from '../../Components/Story/Story'
+import Posts from '../PostsDisplay/Posts';
 
 
 export default function Block() {
@@ -43,7 +44,7 @@ export default function Block() {
           fontWeight: '700',
         }}
       >
-        block
+       <Posts/>
       </Box>
     </div>
   );

@@ -1,0 +1,17 @@
+.coverpic{
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+.profileimg{
+    width: 60px;
+    height: 60px;
+}
+.main{
+    display: flex;
+}
+.rightside{
+    display: flex;
+    justify-content: right;
+    gap:1rem;
+}

@@ -6,8 +6,13 @@ const dotenv=require('dotenv')
 const cors=require('cors')
 const AuthRoute=require('./Routes/AuthRoute')
 const UserRoute=require('./Routes/UserRoute')
+const PostRoute=require('./Routes/PostRoute')
+const UploadRoute=require('./Routes/UploadRoute')
 
 const app=express();
+
+app.use(express.static('public'))
+app.use('/images',express.static('images'))
 
 //middleware
 app.use(bodyParser.json({limit:"30mb",extended:true}));
@@ -17,6 +22,8 @@ app.use(cors())
 //usage of routes
 app.use('/auth',AuthRoute)
 app.use('/user',UserRoute)
+app.use('/post',PostRoute)
+app.use('/upload',UploadRoute)
 
 dotenv.config()
 

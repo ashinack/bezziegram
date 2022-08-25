@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { Button, Card, Container, Form, Row } from 'react-bootstrap'
 import axios from 'axios'
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
 const EmailVerify = () => {
 
 //  let axios= "http://localhost:5000"
+const userstate=useSelector((state)=>state.authReducer.authData)
+console.log('11111555');
+console.log(userstate.newUser._id);
 
    const user=JSON.parse(localStorage.getItem("profile"))
    const userId=user.newUser._id

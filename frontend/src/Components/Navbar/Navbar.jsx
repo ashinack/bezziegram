@@ -24,6 +24,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import GroupIcon from '@mui/icons-material/Group';
 
+import Post from '../Create Post/CreatePost'
+import { Avatar } from '@mui/material';
+import ProfileImg from '../../Images/post1.jpg'
+import { useNavigate } from 'react-router-dom';
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -65,6 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const navigate=useNavigate()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -112,7 +118,9 @@ export default function PrimarySearchAppBar() {
           color="inherit"
         >
           
-            <AccountCircle />
+            <AccountCircle onClick={()=>{
+              navigate('/profile')
+            }}></AccountCircle>
             </IconButton>
         Profile
         </MenuItem>
@@ -190,16 +198,19 @@ export default function PrimarySearchAppBar() {
         <p>Messages</p>
       </MenuItem>
        <MenuItem>
-        <IconButton
+        {/* <IconButton
           size="large"
           aria-label="show 17 new notifications"
         //   color="success"
         style={{color:'#481f3f'}}
-        >
+        > */}
+{/*           
+            <AddBoxIcon/> */}
+             
+            
+            <Post/>
           
-            < AddBoxIcon />
-          
-        </IconButton>
+        {/* </IconButton> */}
         <p>Add Post</p>
       </MenuItem>
      <MenuItem>
@@ -237,7 +248,8 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           style={{color:'#481f3f'}}
         >
-          <AccountCircle />
+          {/* <AccountCircle /> */}
+          <Avatar alt="Remy Sharp" src={ProfileImg} />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -292,15 +304,16 @@ export default function PrimarySearchAppBar() {
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"
              style={{color:'#481f3f'}}
-            >
+            > */}
              
-                <AddBoxIcon/>
+                {/* <AddBoxIcon/> */}
+                <Post/>
               
-            </IconButton>
+            {/* </IconButton> */}
              <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -321,16 +334,17 @@ export default function PrimarySearchAppBar() {
             </IconButton>
            
             <IconButton
-              size="large"
+              size="small"
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-             style={{color:'#481f3f'}}
+             style={{color:'#481f3f',marginLeft:'4px'}}
             >
-              <AccountCircle />
-             
+              
+              <Avatar alt="Remy Sharp" src={ProfileImg} />
+            
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

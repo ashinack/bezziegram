@@ -17,10 +17,12 @@ const registerUser=async(req,res)=>{
     const newUser = new UserModel(req.body)
     const {email}=req.body
     try{
+        
         const oldUser=await UserModel.findOne({email})
         if(oldUser){
             return res.status(400).json({message:"username is already registered"})
         }
+       
        
         
          const user=await newUser.save()
@@ -47,7 +49,7 @@ const registerUser=async(req,res)=>{
          }, process.env.JWT_KEY,{expiresIn:'1h'})
         res.status(200).json({newUser,token})
     }catch(error){
-        res.status(500).json({message:error.message})    
+        res.status(500).json({message:'fill all fields'})    
     }
 
 }
