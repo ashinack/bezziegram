@@ -26,8 +26,10 @@ import GroupIcon from '@mui/icons-material/Group';
 
 import Post from '../Create Post/CreatePost'
 import { Avatar } from '@mui/material';
-import ProfileImg from '../../Images/post1.jpg'
-import { useNavigate } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../Actions/SignupAction';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -70,7 +72,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
+  const {user}=useSelector((state)=>state.authReducer.authData)
+  const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
   const navigate=useNavigate()
+  const dispatch=useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -93,6 +98,10 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleLogOut=()=>{
+    dispatch(logout())
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -117,10 +126,9 @@ export default function PrimarySearchAppBar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          
-            <AccountCircle onClick={()=>{
-              navigate('/profile')
-            }}></AccountCircle>
+          <Link style={{textDecoration:'none',color:'inherit'}} to={`/profile/${user._id}`}>
+            <AccountCircle></AccountCircle>
+            </Link>
             </IconButton>
         Profile
         </MenuItem>
@@ -151,9 +159,10 @@ export default function PrimarySearchAppBar() {
           size="small"
           aria-label="show 17 new notifications"
           color="inherit"
+         
         >
           
-            <LogoutIcon/>
+            <LogoutIcon  onClick={handleLogOut}/>
             </IconButton>
           Logout
           </MenuItem>
@@ -249,7 +258,7 @@ export default function PrimarySearchAppBar() {
           style={{color:'#481f3f'}}
         >
           {/* <AccountCircle /> */}
-          <Avatar alt="Remy Sharp" src={ProfileImg} />
+          <Avatar alt="Remy Sharp" src={user.profilePicture?serverPublic+user.coverPicture:serverPublic+"defaultProfile.png"} />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -268,6 +277,10 @@ export default function PrimarySearchAppBar() {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            // onClick={()=>{
+            //   navigate('/home')
+            // }}
+           
           >
             <span className='text'>Bezziegram</span>
           </IconButton>
@@ -343,7 +356,7 @@ export default function PrimarySearchAppBar() {
              style={{color:'#481f3f',marginLeft:'4px'}}
             >
               
-              <Avatar alt="Remy Sharp" src={ProfileImg} />
+              <Avatar alt="Remy Sharp" src={user.profilePicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"} />
             
             </IconButton>
           </Box>

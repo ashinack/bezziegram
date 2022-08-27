@@ -14,11 +14,11 @@ function App() {
     <>
     <Routes>
      <Route path='/' element={user?<Navigate to="home"/>:<Navigate to='auth'/>}></Route>
-     <Route path='/home' element={user?<Home/>:<Navigate to='auth'/>}></Route>
+     <Route path='/home' element={user?<Home/>:<Navigate to='../auth'/>}></Route>
       <Route path='/auth' element={user ? <Navigate to='../verify'/>:<Signup/>}></Route>
      <Route path='/verify' element={<EmailVerify/>}></Route>
-     <Route path='/login' element={<Login/>}></Route>
-     <Route path='/profile' element={<Profile/>}></Route>
+     <Route path='/login' element={user?<Navigate to='../home'/>:<Login/>}></Route>
+     <Route path='/profile/:id' element={user?<Profile/>:<Navigate to='../auth'/>}></Route>
     </Routes>
     </>
   );

@@ -12,7 +12,8 @@
                 
             uploading:false,error:false}
         case "UPLOAD_FAILED":
-            return {...state,uploading:false,error:true}     
+            return {...state,uploading:false,error:true}
+                 
         default:
             return state       
     }

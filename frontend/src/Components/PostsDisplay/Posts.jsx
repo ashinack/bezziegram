@@ -5,13 +5,14 @@ import { getTimelinePosts } from '../../Actions/postAction'
 import Post from '../Post/Post'
 
 const Posts = () => {
-   const user=useSelector((state)=>state.authReducer.authData)
+   const {user}=useSelector((state)=>state.authReducer.authData)
   const dispatch=useDispatch()
  
   
   const {posts,loading}=useSelector((state)=>state.postReducer)
+ 
   useEffect(()=>{
-    dispatch(getTimelinePosts(user.newUser._id))
+    dispatch(getTimelinePosts(user._id))
   },[])
   return (
     <div className='Posts'>

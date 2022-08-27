@@ -15,3 +15,13 @@
     justify-content: right;
     gap:1rem;
 }
+.home{
+    font-size:20px;
+}
+.homelink{
+    text-decoration: none;
+}
+.UserI{
+    display: flex;
+    justify-content:space-between;
+}

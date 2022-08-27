@@ -7,12 +7,12 @@ import { useNavigate } from 'react-router-dom'
 const EmailVerify = () => {
 
 //  let axios= "http://localhost:5000"
-const userstate=useSelector((state)=>state.authReducer.authData)
+const {user}=useSelector((state)=>state.authReducer.authData)
 console.log('11111555');
-console.log(userstate.newUser._id);
+console.log(user._id);
 
-   const user=JSON.parse(localStorage.getItem("profile"))
-   const userId=user.newUser._id
+  
+   const userId=user._id
    console.log(userId);
   // const state = store.getState();
   // console.log(state);

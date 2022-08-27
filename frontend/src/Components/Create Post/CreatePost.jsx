@@ -62,7 +62,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs() {
-  const user=useSelector((state)=>state.authReducer.authData)
+  const {user}=useSelector((state)=>state.authReducer.authData)
   const loading=useSelector((state)=>state.postReducer.uploading)
   const [open, setOpen] = React.useState(false);
   const [image,setImage]=useState(null)
@@ -86,7 +86,7 @@ export default function CustomizedDialogs() {
     e.preventDefault();
 
     const newPost={
-      userId:user.newUser._id,
+      userId:user._id,
       desc:desc.current.value
     }
     if(image){

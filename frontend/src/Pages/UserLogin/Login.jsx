@@ -1,10 +1,30 @@
+
 import React from 'react'
+import { useState } from 'react';
 import { Button, Card, Container, Form, Row} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { Link,} from 'react-router-dom';
+import { logIn } from '../../Actions/SignupAction';
+
 import './Login.css'
 
 
 const Login = () => {
+  
+   const [data,setData]=useState({name:"",email:""})
+  const dispatch=useDispatch()
+  
+  const handleChange=(e)=>{
+        setData({...data,[e.target.name]:e.target.value})
+    }
+ 
+  const handleSubmit=(e)=>{
+     e.preventDefault()
+    
+     dispatch(logIn(data))
+     
+  }
   return (
   <>
             <div className='login'>
@@ -26,16 +46,16 @@ const Login = () => {
                 <div className='col-lg-6'>
                 <Card style={{width: '18rem'}} className='my-5 cardcolor'>
       <Card.Body>
-         <Form>
+         <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" placeholder="Enter email"  name="email" value={data.email} onChange={handleChange}/>
        
       </Form.Group>
 
       <Form.Group className="mb-3 ms-auto" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" placeholder="Password" name="password" value={data.password}  onChange={handleChange}/>
       </Form.Group>
       <div className='ms-auto'>
       <Button variant="danger" type="submit">
@@ -44,7 +64,7 @@ const Login = () => {
       </div>
     <h6 style={{textAlign:'center'}}>OR</h6>
     <h6 style={{textAlign:'center'}}>Forget Password</h6>
-    <span>Don't have an Account?<Link to='/signup' className='link'> Signup</Link></span>
+    <span>Don't have an Account?<Link to='/auth' className='link'> Signup</Link></span>
     </Form>
       </Card.Body>
     </Card>
