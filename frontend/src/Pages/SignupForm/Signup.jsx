@@ -11,6 +11,8 @@ const Signup = () => {
     
     const dispatch=useDispatch()
     const loading=useSelector((state)=>state.authReducer.loading)
+    const error=useSelector((state)=>state.authReducer.error)
+    const error1=error.message
     // const [isSignup,setSignup]=useState(false)
     console.log(loading);
     const [data,setData]=useState({name:"",email:"",mobileNumber:"",password:"",confirmpassword:""})
@@ -66,6 +68,7 @@ const Signup = () => {
                 <div className='col-lg-6'>
                 <Card style={{width: '18rem'}} className='my-5 cardcolor'>
       <Card.Body>
+       
          <Form  noValidate validated={validated} onSubmit={handleSubmit}>
            
                 <Form.Group className="mb-3"  controlId="validationCustomUsername">
@@ -127,6 +130,9 @@ const Signup = () => {
         *Please enter same password
       </span>
      
+      <div>
+        {error1&&<span style={{color:'red'}}>{error1}</span>}
+      </div>
       
       
       <span>Have an Account ?<Link to='/login' className='link'>Login</Link> </span>

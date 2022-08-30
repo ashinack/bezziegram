@@ -8,29 +8,14 @@ const EmailVerify = () => {
 
 //  let axios= "http://localhost:5000"
 const {user}=useSelector((state)=>state.authReducer.authData)
-console.log('11111555');
-console.log(user._id);
 
   
    const userId=user._id
-   console.log(userId);
-  // const state = store.getState();
-  // console.log(state);
-  // const authToken = state.currentUser.token;
-  // console.log(authToken);
+   
+  
   const navigate=useNavigate()
   const [otp,setOTP]=useState("")
-  //  const handleChange=(e)=>{
-  //       setOTP({...OTP,[e.target.name]:e.target.value})
-  //   }
-    // const emailverify=async(otp,userId)=>{
-    //   console.log('111');
-    //   console.log(userId);
-    //   console.log(otp);
-      
-
-
-    // }
+ 
    const submitHandler=async(e)=>{
      e.preventDefault()
      console.log(otp);
@@ -80,6 +65,8 @@ console.log(user._id);
       <Button variant="danger" type="submit">
        Verify
       </Button>
+
+    
       </div>
   
     </Form>

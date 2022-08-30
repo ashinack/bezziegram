@@ -160,6 +160,12 @@ export default function CustomizedDialogs() {
            
           </Typography>
           </div>
+          {image&&(
+            <div className='previewImage'>
+              <CloseIcon onClick={()=>setImage(null)}/>
+              <img src={URL.createObjectURL(image)} alt=""/>
+            </div>
+          )}
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleSubmit} disabled={loading}>
@@ -169,12 +175,7 @@ export default function CustomizedDialogs() {
             <input type='file' name="myImage" ref={imageRef} onChange={onImageChange}></input>
           </div>
 
-          {image&&(
-            <div className='previewImage'>
-              <CloseIcon onClick={()=>setImage(null)}/>
-              <img src={URL.createObjectURL(image)} alt=""/>
-            </div>
-          )}
+          
         </DialogActions>
       </BootstrapDialog>
     </div>

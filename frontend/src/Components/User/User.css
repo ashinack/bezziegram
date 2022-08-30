@@ -1,0 +1,15 @@
+.follower{
+    display: flex;
+   
+}
+.btn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.fc-button{
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+}

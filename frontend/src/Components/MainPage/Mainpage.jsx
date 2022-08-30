@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 
 import { Hidden } from '@mui/material';
 import BlockDisplay from '../BlockDispaly/BlockDispaly'
+import User from '../User/User';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -20,7 +21,7 @@ export default function AutoGrid() {
     <Box sx={{ flexGrow: 1 ,mt: 2}}>
       <Grid container spacing={10} columnSpacing={{  lg: 3 }}>
         <Hidden lgDown>
-        <Grid item lg>
+        <Grid item lg >
           <Item> 
           <p>Hide Me On XS View Port Width.</p>
      </Item>
@@ -33,7 +34,9 @@ export default function AutoGrid() {
         </Grid>
         <Hidden lgDown>
         <Grid item lg>
-          <Item>xs</Item>
+          <Item>
+            <User/>
+          </Item>
         </Grid>
         </Hidden>
       </Grid>

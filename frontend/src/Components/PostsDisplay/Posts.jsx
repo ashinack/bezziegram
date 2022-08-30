@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getTimelinePosts } from '../../Actions/postAction'
 import Post from '../Post/Post'
 
 const Posts = () => {
+  const[state,setState]=useState([])
    const {user}=useSelector((state)=>state.authReducer.authData)
   const dispatch=useDispatch()
  
@@ -13,6 +14,7 @@ const Posts = () => {
  
   useEffect(()=>{
     dispatch(getTimelinePosts(user._id))
+    console.log(getTimelinePosts);
   },[])
   return (
     <div className='Posts'>
