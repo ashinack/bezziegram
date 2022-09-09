@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const EmailVerify = () => {
 
-//  let axios= "http://localhost:5000"
+//  let axioss= "http://localhost:5000"
 const {user}=useSelector((state)=>state.authReducer.authData)
 
   
@@ -18,7 +18,7 @@ const {user}=useSelector((state)=>state.authReducer.authData)
  
    const submitHandler=async(e)=>{
      e.preventDefault()
-     console.log(otp);
+    
      const data=await axios.post("http://localhost:5000/auth/verifyemail",{otp,userId});
 
       console.log(data);

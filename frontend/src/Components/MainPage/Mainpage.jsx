@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 
 import { Hidden } from '@mui/material';
 import BlockDisplay from '../BlockDispaly/BlockDispaly'
-import User from '../User/User';
+import FollewersCard from '../FollowersCard/FollowersCard';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -35,7 +35,7 @@ export default function AutoGrid() {
         <Hidden lgDown>
         <Grid item lg>
           <Item>
-            <User/>
+            <FollewersCard/>
           </Item>
         </Grid>
         </Hidden>

@@ -16,7 +16,6 @@ import AddLocationIcon from '@mui/icons-material/AddLocation';
 import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
 import { TextField } from '@mui/material';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-// import CloseIcon from '@mui/icons-material/Close';
 import './CreatePost.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { uploadImage, uploadPost } from '../../Actions/uploadAction';

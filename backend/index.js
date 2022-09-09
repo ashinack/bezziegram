@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 const config=require('./config/connection')
 const dotenv=require('dotenv')
 const cors=require('cors')
+const cookieParser = require('cookie-parser');
 const AuthRoute=require('./Routes/AuthRoute')
 const UserRoute=require('./Routes/UserRoute')
 const PostRoute=require('./Routes/PostRoute')
@@ -18,6 +19,10 @@ app.use('/images',express.static('images'))
 app.use(bodyParser.json({limit:"30mb",extended:true}));
 app.use(bodyParser.urlencoded({limit:"30mb",extended:true}));
 app.use(cors())
+app.use(cookieParser());
+
+
+
 
 //usage of routes
 app.use('/auth',AuthRoute)
