@@ -6,6 +6,7 @@ const dotenv=require('dotenv')
 const cors=require('cors')
 const cookieParser = require('cookie-parser');
 const AuthRoute=require('./Routes/AuthRoute')
+const AdminRoute=require('./Routes/AdminRoute')
 const UserRoute=require('./Routes/UserRoute')
 const PostRoute=require('./Routes/PostRoute')
 const UploadRoute=require('./Routes/UploadRoute')
@@ -26,6 +27,7 @@ app.use(cookieParser());
 
 //usage of routes
 app.use('/auth',AuthRoute)
+app.use('/admin',AdminRoute)
 app.use('/user',UserRoute)
 app.use('/post',PostRoute)
 app.use('/upload',UploadRoute)

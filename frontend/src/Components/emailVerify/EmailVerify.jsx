@@ -21,8 +21,7 @@ const {user}=useSelector((state)=>state.authReducer.authData)
     
      const data=await axios.post("http://localhost:5000/auth/verifyemail",{otp,userId});
 
-      console.log(data);
-       console.log(data); 
+     
         if(data){
             navigate('/home')
         } 

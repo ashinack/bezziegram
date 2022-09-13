@@ -20,15 +20,21 @@ const Posts = () => {
     //   console.log(data);
     //   setState(data)
     // }
+    
     dispatch(getTimelinePosts(user._id))
+    // const data=getTimelinePosts(user._id)
+    // console.log(data);
+    console.log('####');
     console.log(getTimelinePosts);
     // fetchposta()
-  },[])
+  })
   return (
     <div className='Posts'>
      {loading?"Fetchin Posts..."
      :posts.map((post,id)=>{
-        return<Post data={post} id={id}/>
+     if(post.userId===user._id){
+      return<Post data={post} id={id}/>
+     }
      })}
     </div>
   )

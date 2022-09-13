@@ -42,10 +42,10 @@ const Signup = () => {
          
           
     }
-    // const resetForm=()=>{
-    //     setConfirmpass(true)
-    //     setData({name:"",email:"",mobileNumber:"",password:"",confirmpassword:""})
-    // }
+    const resetForm=()=>{
+        setConfirmpass(true)
+        setData({name:"",email:"",mobileNumber:"",password:"",confirmpassword:""})
+    }
   return (
    <>
    <div className='signup'>
@@ -120,7 +120,7 @@ const Signup = () => {
      
      
       <div className='ms-auto'>
-      <Button variant="danger" type="submit" disabled={loading }>
+      <Button variant="danger" type="submit" disabled={loading}>
         {loading?"Loading...": 'Signup'}
       </Button>
       </div>
@@ -131,11 +131,13 @@ const Signup = () => {
       </span>
      
       <div>
-        {error1&&<span style={{color:'red'}}>{error1}</span>}
+        {error1?<span style={{color:'red'}}>{error1}</span>:""}
       </div>
       
       
-      <span>Have an Account ?<Link to='/login' className='link'>Login</Link> </span>
+      <span onClick={()=>{
+        resetForm()
+      }}>Have an Account ?<Link to='/login' className='link'>Login</Link> </span>
       
       
     </Form>

@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema({
     },
     mobileNumber:{
         type:Number,
-        required:true
+       
     },
     isAdmin:{
         type:Boolean,

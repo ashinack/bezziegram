@@ -7,6 +7,7 @@ import './Post.css'
 import { useSelector} from 'react-redux'
 import { useState } from 'react'
 import { likePost } from '../../Api/PostRequest'
+import { Avatar } from '@mui/material'
 // import { likePost } from '../../Api/PostRequest'
 
 
@@ -14,6 +15,7 @@ import { likePost } from '../../Api/PostRequest'
 
 const Post = ({data}) => {
   const {user}=useSelector((state)=>state.authReducer.authData)
+  const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER;
  
 
   const [liked,setLiked]=useState(data.likes.includes(user._id))
@@ -26,6 +28,8 @@ const Post = ({data}) => {
   }
   return (
     <div className='Post'>
+      <Avatar alt="Remy Sharp" src={user.coverPicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"} />
+      <span style={{textAlign:'start'}}><b>{user.name}</b></span>
     <img src={data.image?process.env.REACT_APP_PUBLIC_FOLDER+data.image:""}></img>
     <div className='postReact'>
         <img src={liked?Like:NotLike} alt='' className='like' style={{cursor:"pointer"}} onClick={handleLike}></img>
@@ -35,7 +39,7 @@ const Post = ({data}) => {
     </div>
     <span style={{textAlign:'left'}}>{likes} likes</span>
     <div className="detail">
-        <span><b>{data.name}</b></span>
+      
         <span>{data.desc}</span>
     </div>
     </div>

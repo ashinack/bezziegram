@@ -12,6 +12,8 @@ export const logIn=(FormData)=>async(dispatch)=>{
    }
 }
 
+
+
 export const signUp=(FormData)=>async(dispatch)=>{
     dispatch({type:"AUTH_START"})
    try {

@@ -59,7 +59,8 @@ const registerUser = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body
     try {
-        const user = await UserModel.findOne({ email: email })
+        const user = await UserModel.findOne({ email: email ,isAdmin:"false"})
+        console.log(user);
         if (user) {
             const validity = await bcrypt.compare(password, user.password)
             if (!validity) {
@@ -90,6 +91,8 @@ const login = async (req, res) => {
         res.status(500).json({ message: error.message })
     }
 }
+
+
 
 const verifyEmail = async (req, res) => {
     const { otp, userId } = req.body

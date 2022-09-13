@@ -44,7 +44,11 @@ const Profile = () => {
            <div className='userpost'>
                 {
                     posts.map((post,id)=>{
+                      if(post.userId===user._id){
+
+                      
                          return<Post data={post} id={id}/>
+                         }
                     })
                 }
 
