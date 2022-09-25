@@ -29,7 +29,7 @@ const Post = ({data}) => {
   return (
     <div className='Post'>
       <Avatar alt="Remy Sharp" src={user.coverPicture?serverPublic+user.profilePicture:serverPublic+"defaultProfile.png"} />
-      <span style={{textAlign:'start'}}><b>{user.name}</b></span>
+      <span style={{textAlign:'start'}}><b>{data.name}</b></span>
     <img src={data.image?process.env.REACT_APP_PUBLIC_FOLDER+data.image:""}></img>
     <div className='postReact'>
         <img src={liked?Like:NotLike} alt='' className='like' style={{cursor:"pointer"}} onClick={handleLike}></img>

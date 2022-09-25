@@ -10,6 +10,8 @@ const AdminRoute=require('./Routes/AdminRoute')
 const UserRoute=require('./Routes/UserRoute')
 const PostRoute=require('./Routes/PostRoute')
 const UploadRoute=require('./Routes/UploadRoute')
+const MessageRoute=require('./Routes/MessageRoute')
+const ChatRoute =require('./Routes/ChatRoute')
 
 const app=express();
 
@@ -31,6 +33,9 @@ app.use('/admin',AdminRoute)
 app.use('/user',UserRoute)
 app.use('/post',PostRoute)
 app.use('/upload',UploadRoute)
+app.use("/chat", ChatRoute);
+MessageRoute
+app.use('/message',MessageRoute)
 
 dotenv.config()
 

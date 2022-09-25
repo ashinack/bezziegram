@@ -132,4 +132,17 @@ const unfollowUser = async (req, res) => {
     }
 }
 
-module.exports = { userData, updateUser, deleteUser, followUser, unfollowUser,getAllUsers }
+// //follow user profile
+// const followUserProfile=async (req,res)=>{
+//     const userId=req.params.id
+//     try {
+//         const followuserprofile=await UserModel.find({_id:userId})
+//         res.status(200).json(followuserprofile)
+//     } catch (error) {
+//         res.status(500).json(error)
+        
+//     } 
+
+// }
+
+module.exports = { userData, updateUser, deleteUser, followUser, unfollowUser, getAllUsers}

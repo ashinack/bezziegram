@@ -201,7 +201,9 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
+            <Link style={{textDecoration:'none',color:'#481f3f'}} to='../chat'>
             <MailIcon />
+            </Link>
           </Badge>
         </IconButton>
         <p>Messages</p>
@@ -258,7 +260,8 @@ export default function PrimarySearchAppBar() {
           style={{color:'#481f3f'}}
         >
           {/* <AccountCircle /> */}
-          <Avatar alt="Remy Sharp" src={user.profilePicture?serverPublic+user.coverPicture:serverPublic+"defaultProfile.png"} />
+          
+          
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -314,7 +317,9 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton size="large" aria-label="show 4 new mails" style={{color:'#481f3f'}}>
               <Badge badgeContent={4} color="error">
+                <Link style={{textDecoration:'none',color:'#481f3f'}} to='../chat'>
                 <MailIcon />
+                </Link>
               </Badge>
             </IconButton>
             {/* <IconButton

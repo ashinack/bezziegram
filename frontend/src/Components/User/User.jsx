@@ -23,7 +23,7 @@ const User = ({person}) => {
             {/* <img src={Image} alt="" /> */}
         
         <div className="name">
-          
+            
             <span>{person.name}</span><br/>
             <span>{person.username}</span>
         </div>

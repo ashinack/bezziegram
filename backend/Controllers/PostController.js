@@ -92,6 +92,7 @@ const getTimelinePost=async(req,res)=>{
    
     try {
         const currentUserPosts=await PostModel.find({userId:userId})
+       
         const followingUserPosts=await UserModel.aggregate([
             {
                 $match:{
@@ -108,6 +109,7 @@ const getTimelinePost=async(req,res)=>{
             },
             {
                 $project:{
+                    name:1,
                     followingPosts:1,
                     _id:0
                 }

@@ -6,6 +6,7 @@ import EmailVerify from './Components/emailVerify/EmailVerify';
 import Profile from './Components/Profile/Profile';
 import Adminhome from './Pages/AdminHome/Adminhome';
 import AdminLogin from './Pages/AdminLogin/AdminLogin';
+import Chat from './Pages/Chat/Chat';
 import Home from './Pages/Home_page/Home';
 import Signup from './Pages/SignupForm/Signup';
 import Login from './Pages/UserLogin/Login'
@@ -25,6 +26,7 @@ function App() {
      <Route path='/login' element={user?<Navigate to='../home'/>:<Login/>}></Route>
      <Route path='/profile/:id' element={user?<Profile/>:<Navigate to='../auth'/>}></Route>
         <Route path='/admin' element={admin ? <Navigate to='/adminhome'/>:<AdminLogin/>}></Route>
+        <Route path='/chat' element={user ? <Chat /> : <Navigate to='../auth'></Navigate>}></Route>
     </Routes>
     </>
   );
