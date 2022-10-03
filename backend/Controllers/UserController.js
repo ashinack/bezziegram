@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 //get all users
 const getAllUsers=async(req,res)=>{
     try {
-        let users=await UserModel.find({isAdmin:"false"});
+        let users=await UserModel.find({isAdmin:"false",verified:true});
         users=users.map((user)=>{
             const {password,...otherDetails}=user._doc
             return otherDetails

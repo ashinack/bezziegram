@@ -18,3 +18,16 @@ export const uploadPost=(data)=>async(dispatch)=>{
        dispatch({type:"UPLOAD_FAILED"})
     }
 }
+
+//upload comments
+
+// export const uploadComment = (id,data) => async (dispatch) => {
+//     dispatch({ type: "UPLOAD_START" })
+//     try {
+//         const newComment = await UploadApi.uploadComment(id,data)
+//         dispatch({ type: 'UPLOAD_SUCCESS', data: newComment.data })
+//     } catch (error) {
+//         //    console.log(error); 
+//         dispatch({ type: "UPLOAD_FAILED" })
+//     }
+// }

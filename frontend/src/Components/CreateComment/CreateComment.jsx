@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState,useRef} from 'react'
+import {useRef} from 'react'
 import PropTypes from 'prop-types';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
@@ -10,16 +10,19 @@ import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import ImageIcon from '@mui/icons-material/Image';
-import AddLocationIcon from '@mui/icons-material/AddLocation';
-import SlowMotionVideoIcon from '@mui/icons-material/SlowMotionVideo';
-import { TextField } from '@mui/material';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import './CreatePost.css'
-import {useDispatch, useSelector} from 'react-redux'
-import { uploadImage, uploadPost } from '../../Actions/uploadAction';
-import { Link } from 'react-router-dom';
+
+import { Avatar, TextField } from '@mui/material';
+
+import './CreateComment.css'
+import Comment from '../../Images/comment2.png' 
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadComment } from '../../Actions/CommentAction';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { getComment } from '../../Api/CommentRequest';
+
+
+
 
  
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -61,53 +64,47 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function CustomizedDialogs() {
+export default function CustomizedDialogs({datas}) {
+  console.log('postt',datas._id);
   const {user}=useSelector((state)=>state.authReducer.authData)
   const loading=useSelector((state)=>state.postReducer.uploading)
+  const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER;
   const [open, setOpen] = React.useState(false);
-  const [image,setImage]=useState(null)
-  const imageRef=useRef()
+   const comments=useRef()
+   const[comment,setComment]=useState([])
+   const[cmts,setCmts]=useState(false)
   const dispatch=useDispatch()
-  const desc=useRef()
 
-  const onImageChange=(event)=>{
-    if(event.target.files&&event.target.files[0]){
-        let img=event.target.files[0];
-        setImage(img)
+   const reset = () => {
+    comments.current.value = " ";
+  };
+
+  useEffect(()=>{
+    console.log('kkkkk');
+    const fetchComment=async()=>{
+      const {data}=await getComment(datas._id)
+      console.log('////',data);
+      setComment(data)
     }
-  }
-
-  const reset=()=>{
-    setImage(null);
-    desc.current.value=""
-  }
+    fetchComment()
+    
+  },[cmts])
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-
-    const newPost={
+   const newComment={
       userId:user._id,
-      desc:desc.current.value
+      comments:comments.current.value
     }
-    if(image){
-      const data=new FormData()
-      const filename=Date.now()+image.name;
-      data.append("name",filename)
-      data.append("file",image)
-      newPost.image=filename
-      console.log(newPost);
-      try {
-        dispatch(uploadImage(data))
-        console.log('1111');
-        console.log(data);
-        reset()
-        
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    dispatch(uploadPost(newPost))
+    
+    dispatch(uploadComment(datas._id,newComment))
+    setCmts(!cmts)
+
+     reset();
+   
   }
+
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -125,8 +122,9 @@ export default function CustomizedDialogs() {
              style={{color:'#481f3f',marginTop:'12px'}}
               onClick={handleClickOpen}
             >
+                <img src={Comment} alt='' className='comment'></img>
                 
-                <AddBoxIcon />
+                {/* <AddBoxIcon /> */}
                 
                
               
@@ -139,20 +137,20 @@ export default function CustomizedDialogs() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title"  onClose={handleClose}>
-              Create post
+              Create Comment
         </BootstrapDialogTitle>
         <DialogContent dividers>
         
           <div className='postdiv'>
           <Typography gutterBottom>
            <div>
-            <TextField inputRef={desc} required label="Desc for your post" color="secondary" focused />
+            <TextField inputRef={comments}  required label="Add Comments" color="secondary" focused />
             </div>
             <div style={{color:'secondary'}}>
-                <div onClick={()=>imageRef.current.click()}>
+                {/* <div onClick={()=>imageRef.current.click()}>
             <ImageIcon />
             photo
-            </div>
+            </div> */}
             {/* <AddLocationIcon/>
             <SlowMotionVideoIcon/>
             <CalendarMonthIcon/> */}
@@ -160,23 +158,36 @@ export default function CustomizedDialogs() {
            
            
           </Typography>
+          
           </div>
-          {image&&(
-            <div className='previewImage'>
-              <CloseIcon onClick={()=>setImage(null)}/>
-              <img src={URL.createObjectURL(image)} alt=""/>
-            </div>
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleSubmit} disabled={loading}>
+         
+          <Button onClick={handleSubmit} autoFocus  disabled={loading}>
             {loading?"Uploading.....":"Share"}
           </Button>
-          <div style={{display:'none'}}>
-            <input type='file' name="myImage" ref={imageRef} onChange={onImageChange}></input>
-          </div>
-
-          
+        </DialogContent>
+        <DialogActions>
+          <div className='maindiv'>
+         {
+          comment.map((e)=>{
+            return(
+              <div className='comments'>
+               
+                <Avatar className='cmtimg' src={
+                        e.userId.profilePicture
+                        ? serverPublic + e.userId.profilePicture
+                        : serverPublic + "defaultProfile.png"
+                    }></Avatar>
+                    <div className='cmname'>
+                    <span>{e.userId.name}</span>
+                    </div>
+                    <div className='usercm'>
+                      <span>{e.comments}</span>
+                    </div>
+              </div>
+            )
+          })
+         }
+         </div>
         </DialogActions>
       </BootstrapDialog>
     </div>

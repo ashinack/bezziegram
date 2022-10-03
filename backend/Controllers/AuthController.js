@@ -20,7 +20,7 @@ const registerUser = async (req, res) => {
 
         const oldUser = await UserModel.findOne({ email })
         if (oldUser) {
-            return res.status(400).json({ message: "username is already registered" })
+            return res.status(400).json({ message:"username is already registered"})
         }
 
 
@@ -28,6 +28,7 @@ const registerUser = async (req, res) => {
         const user = await newUser.save()
         console.log(user);
         const OTP = generateOTP()
+        console.log(OTP);
         const verificationToken = new VerificationToken({
             owner: user._id,
             emailtoken: OTP
@@ -59,7 +60,7 @@ const registerUser = async (req, res) => {
 const login = async (req, res) => {
     const { email, password } = req.body
     try {
-        const user = await UserModel.findOne({ email: email ,isAdmin:"false"})
+        const user = await UserModel.findOne({ email: email ,isAdmin:false,verified:true})
         console.log(user);
         if (user) {
             const validity = await bcrypt.compare(password, user.password)

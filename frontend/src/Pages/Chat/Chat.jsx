@@ -40,6 +40,8 @@ const Chat = () => {
     },[user])
 
 
+
+
     //receive message from socket server
     
     useEffect(()=>{
@@ -66,7 +68,11 @@ const Chat = () => {
     },[user])
 
     
-
+   const checkOnlineStatus=(chat)=>{
+           const chatMember  =chat.members.find((member)=>member!==user._id)
+           const online=OnlineUsers.find((user)=>user.userId===chatMember)
+           return online?true:false
+   }
 
   return (
     <>
@@ -81,7 +87,7 @@ const Chat = () => {
            {
             chats.map((chat)=>(
                 <div onClick={()=>setCurrentChat(chat)}>
-                  <Conversation data={chat} currentUserId={user._id}></Conversation>
+                  <Conversation data={chat} currentUserId={user._id} online={checkOnlineStatus(chat)}></Conversation>
                 </div>
             ))
            }

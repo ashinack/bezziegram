@@ -14,6 +14,14 @@
            
         case "UPLOAD_FAILED":
             return {...state,uploading:false,error:true}
+
+            //belongs to posts.jsx
+        case "RETREIVING_START":
+            return {...state,loading:true,error:false} 
+        case "RETREIVING_SUCCESS":
+            return { ...state, posts: action.data, loading: false, error: false }   
+        case "RETREIVING_FAIL" :
+            return { ...state,loading: false, error: true }     
                  
         default:
             return state       

@@ -139,4 +139,60 @@ const getUserPost = async (req, res) => {
     }
 }
 
-module.exports = { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost,getUserPost }
+//add comments
+
+// const addComment = async (req, res) => {
+//     const id = req.params.id
+//     const {userId,comments}=req.body
+//     try {
+//         const post = await PostModel.findById(id)
+//         console.log(post);
+//         if (post) {
+//             const data = await post.updateOne({ $push: {userId,comments} })
+//             console.log(data);
+//         //    const data=await post.comments.push({userId:userId,comment:comments})
+//             res.status(200).json(data)
+//         }
+//         else {
+//             res.status(403).json('action forbidden')
+//         }
+
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// }
+
+const addComment=async(req,res)=>{
+    const id=req.params.id
+    const {userId,comments}=req.body
+    try {
+       const data= await PostModel.updateOne({_id:id},{$push:{"comments":{
+        userId:userId,
+        comments:comments
+       }}})  
+        const comdata = await PostModel.findById(id).populate({ path: 'comments.userId' })
+       console.log(comdata.comments);
+    //    console.log(data);
+        res.status(200).json(comdata.comments)
+
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+//get comments
+
+const getComments=async(req,res)=>{
+    const id=req.params.id
+    try {
+        const data = await PostModel.findById(id).populate({path: 'comments.userId'})
+        console.log(data.comments);
+        res.status(200).json(data.comments)
+    } catch (error) {
+        
+    }
+
+}
+
+
+module.exports = { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost, getUserPost, addComment,getComments }

@@ -8,41 +8,52 @@ import './Profile.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserPost } from '../../Actions/postAction'
 import Post from '../Post/Post'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ProfileSide from '../ProfileSide/ProfileSide'
 import RightSideProfile from '../RightSideProfile.js/RightSideProfile'
+import { getUser } from '../../Api/UserRequest'
+import { useState } from 'react'
+
+
 
 
 
 
 const Profile = () => {
+    
     const {user}=useSelector((state)=>state.authReducer.authData)
-    const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
     console.log(user);
     console.log(user.name);
+    
     const dispatch=useDispatch()
      const posts=useSelector((state)=>state.postReducer.posts)
 
-     useEffect(()=>{
-    dispatch(getUserPost(user._id))
-  },[])
+  //    useEffect(()=>{
+  //   dispatch(getUserPost(user._id))
+  // },[])
+
+  
 
   return (
     <div>
         <Navbar/>
       <Container>
-        
-      <ProfileSide/>
+      
+       <ProfileSide/>
+     
 
       
     <Row>
          <Col xs={12}  sm={12} md={4}>
          <RightSideProfile/>
+         
+         
          </Col>
         <Col xs={12} sm={12} md={4}>
           
            <div className='userpost'>
                 {
+                 
                     posts.map((post,id)=>{
                       if(post.userId===user._id){
 

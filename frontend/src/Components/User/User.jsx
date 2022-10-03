@@ -1,6 +1,7 @@
 import { Avatar } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { followUser, unFollowUser } from '../../Actions/userAction';
 
 
@@ -23,8 +24,9 @@ const User = ({person}) => {
             {/* <img src={Image} alt="" /> */}
         
         <div className="name">
-            
+            <Link style={{textDecoration:'none',color:'inherit'}}  to={`/followuserprofile/${person._id}`}>
             <span>{person.name}</span><br/>
+            </Link>
             <span>{person.username}</span>
         </div>
         </div>

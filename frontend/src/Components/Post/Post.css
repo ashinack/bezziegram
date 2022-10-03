@@ -28,3 +28,10 @@
 .detail{
     text-align: left;
 }
+.post-head{
+    display: flex;
+}
+.dots{
+    display: flex;
+     margin-left: 10px;
+}

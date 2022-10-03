@@ -11,14 +11,19 @@ export const getTimelinePosts=(id)=>async(dispatch)=>{
     }
 }
 
-export const getUserPost=(id)=>async(dispatch)=>{
-    dispatch({type:"GETTING_START"})
-    try {
-        const {data}=await PostApi.getUserPost(id)
-        dispatch({type:"GETTING_SUCCESS",data:data})
+// export const getUserPost=(id)=>async(dispatch)=>{
+//     dispatch({type:"GETTING_START"})
+//     try {
+//         const {data}=await PostApi.getUserPost(id)
+//         dispatch({type:"GETTING_SUCCESS",data:data})
         
-    } catch (error) {
-        dispatch({type:"GETTING_FAILED"})
-        // console.log(error);
-    }
+//     } catch (error) {
+//         dispatch({type:"GETTING_FAILED"})
+//         // console.log(error);
+//     }
+// }
+
+export const deletePost=(id,userId)=>async (dispatch)=>{
+    dispatch({type:"DELETE_POST"})
+    PostApi.deletePost(id,userId)
 }

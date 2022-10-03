@@ -1,0 +1,32 @@
+.comment{
+    margin-top: -24px;
+}
+/* .comments{
+    display:flex;
+    
+} */
+.usercm{
+    margin-left: -5rem;
+    margin-top: 1rem;
+/* display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center; */
+}
+.maindiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.maindiv>div{
+    display: flex;
+    gap: 1rem;
+    
+}
+.cmtimg{
+    margin-right: 4rem;
+}
+.cmname{
+    margin-left: 2rem;
+}

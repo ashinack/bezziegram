@@ -132,7 +132,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
         Profile
         </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
+      {/* <MenuItem onClick={handleMenuClose}>
         <IconButton
           size="small"
           aria-label="show 17 new notifications"
@@ -142,8 +142,8 @@ export default function PrimarySearchAppBar() {
             <BookmarkIcon/>
             </IconButton>
         Saved
-        </MenuItem>
-       <MenuItem onClick={handleMenuClose}>
+        </MenuItem> */}
+       {/* <MenuItem onClick={handleMenuClose}>
          <IconButton
           size="small"
           aria-label="show 17 new notifications"
@@ -153,7 +153,7 @@ export default function PrimarySearchAppBar() {
             <SettingsIcon/>
             </IconButton>
         Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleMenuClose}>
            <IconButton
           size="small"
@@ -200,11 +200,11 @@ export default function PrimarySearchAppBar() {
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          {/* <Badge badgeContent={4} color="error"> */}
             <Link style={{textDecoration:'none',color:'#481f3f'}} to='../chat'>
             <MailIcon />
             </Link>
-          </Badge>
+          {/* </Badge> */}
         </IconButton>
         <p>Messages</p>
       </MenuItem>
@@ -224,7 +224,7 @@ export default function PrimarySearchAppBar() {
         {/* </IconButton> */}
         <p>Add Post</p>
       </MenuItem>
-     <MenuItem>
+     {/* <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -236,9 +236,9 @@ export default function PrimarySearchAppBar() {
           
         </IconButton>
         <p>Add Reels</p>
-      </MenuItem>
+      </MenuItem> */}
      
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton
           size="large"
           aria-label="show 17 new notifications"
@@ -250,7 +250,7 @@ export default function PrimarySearchAppBar() {
           </Badge>
         </IconButton>
         <p>Friends</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -285,7 +285,9 @@ export default function PrimarySearchAppBar() {
             // }}
            
           >
+            <Link style={{textDecoration:'none',color:'#481f3f'}} to='../home'>
             <span className='text'>Bezziegram</span>
+            </Link>
           </IconButton>
           {/* <Typography
             variant="h6"
@@ -311,16 +313,16 @@ export default function PrimarySearchAppBar() {
               aria-label="show 17 new notifications"
               style={{color:'#481f3f'}}
             >
-              
+                <Link style={{textDecoration:'none',color:'#481f3f'}} to='../home'>
                 < HomeIcon/>
-             
+               </Link>
             </IconButton>
             <IconButton size="large" aria-label="show 4 new mails" style={{color:'#481f3f'}}>
-              <Badge badgeContent={4} color="error">
+              {/* <Badge badgeContent={4} color="error"> */}
                 <Link style={{textDecoration:'none',color:'#481f3f'}} to='../chat'>
                 <MailIcon />
                 </Link>
-              </Badge>
+              {/* </Badge> */}
             </IconButton>
             {/* <IconButton
               size="large"
@@ -329,10 +331,12 @@ export default function PrimarySearchAppBar() {
             > */}
              
                 {/* <AddBoxIcon/> */}
+                
                 <Post/>
+               
               
             {/* </IconButton> */}
-             <IconButton
+             {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"
               style={{color:'#481f3f'}}
@@ -340,8 +344,8 @@ export default function PrimarySearchAppBar() {
              
                 <GroupWorkIcon/>
               
-            </IconButton>
-            <IconButton
+            </IconButton> */}
+            {/* <IconButton
               size="large"
               aria-label="show 17 new notifications"
               style={{color:'#481f3f'}}
@@ -349,7 +353,7 @@ export default function PrimarySearchAppBar() {
               <Badge badgeContent={17} color="error">
                 <GroupIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
            
             <IconButton
               size="small"
