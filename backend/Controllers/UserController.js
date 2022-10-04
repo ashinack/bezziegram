@@ -6,11 +6,20 @@ const jwt = require('jsonwebtoken')
 const getAllUsers=async(req,res)=>{
     try {
         let users=await UserModel.find({isAdmin:"false",verified:true});
-        users=users.map((user)=>{
+        let loguser=await UserModel.findById(req.params.id)
+        let follow=loguser.following
+        let newUser=users.filter((e)=>{
+            if(!follow.includes(e._id)){
+                return e
+            }
+
+        })
+      
+        newUser = newUser.map((user)=>{
             const {password,...otherDetails}=user._doc
             return otherDetails
         })
-        res.status(200).json(users)
+        res.status(200).json(newUser)
     } catch (error) {
        res.status(500).json(error) 
     }
@@ -41,7 +50,7 @@ const updateUser = async (req, res) => {
     const { _id, currentUserAdminStatus, password } = req.body
     if (id === _id) {
 
-console.log(_id);
+
         try {
             if (password) {
                 const salt = await bcrypt.genSalt(10);

@@ -12,4 +12,4 @@ API.interceptors.request.use((req) => {
 
 export const getTimelinePosts = (id) => API.get(`/post/${id}/timelinepost`)
 export const likePost=(id,userId)=>API.put(`post/${id}/like`,{userId:userId})
-export const deletePost=(id,userId)=>API.delete(`post/${id}`,{userId:userId})
+export const deletePost = (id,data) => API.post(`post/${id}/delete`,data)

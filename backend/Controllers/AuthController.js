@@ -26,16 +26,15 @@ const registerUser = async (req, res) => {
 
 
         const user = await newUser.save()
-        console.log(user);
+       
         const OTP = generateOTP()
-        console.log(OTP);
+       
         const verificationToken = new VerificationToken({
             owner: user._id,
             emailtoken: OTP
         })
         const emailToken = await verificationToken.save();
-        console.log(emailToken);
-
+       
         mailTransport().sendMail({
             from: 'fashionhu321@gmail.com',
             to: user.email,
@@ -61,7 +60,7 @@ const login = async (req, res) => {
     const { email, password } = req.body
     try {
         const user = await UserModel.findOne({ email: email ,isAdmin:false,verified:true})
-        console.log(user);
+        
         if (user) {
             const validity = await bcrypt.compare(password, user.password)
             if (!validity) {
@@ -97,12 +96,11 @@ const login = async (req, res) => {
 
 const verifyEmail = async (req, res) => {
     const { otp, userId } = req.body
-    console.log(userId);
-    console.log(otp);
+    
     // if(!userId||otp.trim()) return sendError(res,'invalid request,missing parameters!')
     // if (!isValidObjectId()) return sendError(res, 'invalid user id!')
     const user = await UserModel.findById(userId)
-    console.log(user);
+    
     if (!user) return sendError(res, 'Sorry,user not found')
 
     if (user.verified) return sendError(res, 'this account is already verified');

@@ -4,7 +4,7 @@ const { userData, updateUser, deleteUser, followUser, unfollowUser, getAllUsers 
 
 const router = express.Router();
 
-router.get('/',getAllUsers)
+router.get('/:id/alluser',getAllUsers)
 router.get('/:id',userData)
 router.put('/:id',updateUser)
 router.delete('/:id',  deleteUser)

@@ -8,7 +8,7 @@ const Adminlogin = async (req, res) => {
     const { email, password } = req.body
     try {
         const user = await UserModel.findOne({ email: email, isAdmin:true})
-        console.log(user);
+       
         if (user) {
             const validity = await bcrypt.compare(password, user.password)
             if (!validity) {

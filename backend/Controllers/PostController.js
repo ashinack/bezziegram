@@ -70,6 +70,7 @@ const deletePost=async(req,res)=>{
 const likePost=async(req,res)=>{
     const id=req.params.id
     const {userId}=req.body
+  
     try {
         const post=await PostModel.findById(id)
         if(!post.likes.includes(userId)){

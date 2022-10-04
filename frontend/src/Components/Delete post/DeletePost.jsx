@@ -5,14 +5,16 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePost } from '../../Api/PostRequest';
+import { unFollowUser } from '../../Actions/userAction';
+
 
 
 
 const ITEM_HEIGHT = 48;
 
 export default function LongMenu({data}) {
-   const dispatch=useDispatch()
   const {user}=useSelector((state)=>state.authReducer.authData)
+  const dispatch=useDispatch()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,12 +22,19 @@ export default function LongMenu({data}) {
   };
    
   const handleDelete=()=>{
-   deletePost(data._id,data.userId);
+     console.log('ppp');
+     console.log(user._id);
+    deletePost(data._id,{userId:user._id})
   }
 
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleFollow=()=>{
+    console.log('unfollow');
+    dispatch(unFollowUser(data.userId,{_id :user._id}))
+  }
 
   return (
     <div>
@@ -56,14 +65,14 @@ export default function LongMenu({data}) {
         }}
       >
         {
-       data.userId==user._id?
+       data.userId===user._id?
          <div>
         <MenuItem onClick={handleDelete}>Delete</MenuItem>
         <MenuItem onClick={handleClose}>Cancel</MenuItem>
         </div>
         :
          <div>
-        <MenuItem>Unfollow</MenuItem>
+        <MenuItem onClick={handleFollow}>Unfollow</MenuItem>
         <MenuItem onClick={handleClose}>Cancel</MenuItem>
         </div>
        }

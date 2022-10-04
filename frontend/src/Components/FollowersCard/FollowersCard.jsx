@@ -13,7 +13,7 @@ const FollowersCard = () => {
 
  useEffect(()=>{
   const fetchPersons=async()=>{
-    const {data}=await getAllUser();
+    const {data}=await getAllUser(user._id);
     setPersons(data)
     console.log(data);
   }

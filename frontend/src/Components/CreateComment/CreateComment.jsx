@@ -80,10 +80,8 @@ export default function CustomizedDialogs({datas}) {
   };
 
   useEffect(()=>{
-    console.log('kkkkk');
     const fetchComment=async()=>{
       const {data}=await getComment(datas._id)
-      console.log('////',data);
       setComment(data)
     }
     fetchComment()
