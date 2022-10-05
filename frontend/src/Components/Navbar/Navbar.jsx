@@ -30,6 +30,7 @@ import { Avatar } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Actions/SignupAction';
+import { searchUser } from '../../Api/UserRequest';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -73,6 +74,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const {user}=useSelector((state)=>state.authReducer.authData)
+  // const [srch,setSrch]=React.useState({firstname:""})
+  // const [svalue,setSvalue]=React.useState('')
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
   const navigate=useNavigate()
   const dispatch=useDispatch()
@@ -102,6 +105,21 @@ export default function PrimarySearchAppBar() {
   const handleLogOut=()=>{
     dispatch(logout())
   }
+
+  // const searchChange=(e)=>{
+  //   setSrch({firstname:e.target.value})
+  // }
+
+//   const handleSearch = async (e) => {
+//   e.preventDefault();
+//   console.log('Svalue',srch);
+//   await searchUser(srch).then(res=>{
+//     console.log('serchresult',res);
+//   setSvalue(res)
+
+//   }).catch(err=>console.log(err))
+
+// }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -271,7 +289,7 @@ export default function PrimarySearchAppBar() {
   return (
     
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: '#ad7fa4' }}>
+      <AppBar  position="fixed" style={{ background: '#ad7fa4' }}>
         <Toolbar>
           
           <IconButton
@@ -297,15 +315,18 @@ export default function PrimarySearchAppBar() {
           >
             MUI
           </Typography> */}
-          <Search>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              name='firstname'
+              onChange={searchChange}
+              onClick={handleSearch}
             />
-          </Search>
+          </Search> */}
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
              <IconButton

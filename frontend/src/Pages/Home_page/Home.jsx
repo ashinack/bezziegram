@@ -5,12 +5,17 @@ import Navbar from '../../Components/Navbar/Navbar'
 
 import './Home.css'
 import Mainpage from '../../Components/MainPage/Mainpage'
+import { Container } from 'react-bootstrap'
 
 const Home = () => {
   return (
     <>
       <Navbar/>
-      <Mainpage/>
+     
+      <div className="container-fluid my-5">
+      <Mainpage />
+      </div>
+      
       {/* <div className="homecontainer">
         <LeftSide/>
         <Feeds/>

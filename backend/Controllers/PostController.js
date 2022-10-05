@@ -195,5 +195,23 @@ const getComments=async(req,res)=>{
 
 }
 
+//get userdt
+const getUserdt=async(req,res)=>{
+    const id=req.params.id
+    // const {userId}=req.body
+    try {
+        const data = await PostModel.findById(id).populate('userId')
+        console.log(data);
+        res.status(200).json(data)
+        
+    } catch (error) {
+        res.status(500).json(error)
+    }
+   
 
-module.exports = { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost, getUserPost, addComment,getComments }
+
+
+}
+
+
+module.exports = { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost, getUserPost, addComment, getComments, getUserdt }

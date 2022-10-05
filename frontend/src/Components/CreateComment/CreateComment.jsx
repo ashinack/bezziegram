@@ -65,7 +65,7 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs({datas}) {
-  console.log('postt',datas._id);
+ 
   const {user}=useSelector((state)=>state.authReducer.authData)
   const loading=useSelector((state)=>state.postReducer.uploading)
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER;

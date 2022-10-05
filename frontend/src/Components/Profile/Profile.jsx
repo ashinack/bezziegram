@@ -22,17 +22,11 @@ import { useState } from 'react'
 const Profile = () => {
     
     const {user}=useSelector((state)=>state.authReducer.authData)
-    console.log(user);
-    console.log(user.name);
+   
     
     const dispatch=useDispatch()
      const posts=useSelector((state)=>state.postReducer.posts)
-
-  //    useEffect(()=>{
-  //   dispatch(getUserPost(user._id))
-  // },[])
-
-  
+    
 
   return (
     <div>

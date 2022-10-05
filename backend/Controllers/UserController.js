@@ -154,4 +154,19 @@ const unfollowUser = async (req, res) => {
 
 // }
 
+
+//Search user
+// const searchUser = async (req, res) => {
+//     const na = req.body['firstname']
+//     console.log('search', req.body);
+//     try {
+//         const user = await UserModel.find()
+//         const srUser = user.filter((e) => e.firstname.includes(na))
+//         console.log(srUser, 'searchuser');
+//         res.status(200).json(srUser)
+//     } catch (error) {
+//         res.status(500).json(error)
+//     }
+// }
+
 module.exports = { userData, updateUser, deleteUser, followUser, unfollowUser, getAllUsers}

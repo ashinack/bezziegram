@@ -1,5 +1,5 @@
 const express=require('express')
-const { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost, getUserPost, addComment, getComments }=require('../Controllers/PostController')
+const { createPost, getPost, updatePost, deletePost, likePost, getTimelinePost, getUserPost, addComment, getComments, getUserdt }=require('../Controllers/PostController')
 
 const router=express.Router()
 
@@ -12,4 +12,5 @@ router.post('/:id/delete',deletePost)
 router.put('/:id/like', likePost)
 router.get('/:id/timelinepost', getTimelinePost)
 router.get('/:id/userpost', getUserPost)
+router.get('/:id/userdt', getUserdt)
 module.exports=router

@@ -19,3 +19,5 @@ export const getAllUser=(id)=>API.get(`/user/${id}/alluser`)
 export const followUser=(id,data)=>API.put(`/user/${id}/follow`,data)
 
 export const unFollowUser = (id, data) => API.put(`/user/${id}/unfollow`, data)
+
+// export const searchUser = (data) => API.post('/user/search', data)

@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Story from '../../Components/Story/Story'
 import Posts from '../PostsDisplay/Posts';
+import './BlockDisplay.css'
 
 
 export default function Block() {
@@ -27,6 +28,7 @@ export default function Block() {
       >
         <Story/>
       </Box>
+      <div className="post">
       <Box
         component="span"
         sx={{
@@ -46,6 +48,7 @@ export default function Block() {
       >
        <Posts/>
       </Box>
+      </div>
     </div>
   );
 }

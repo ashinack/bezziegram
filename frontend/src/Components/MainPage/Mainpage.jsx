@@ -23,19 +23,25 @@ export default function AutoGrid() {
         <Hidden lgDown>
         <Grid item lg >
           <Item> 
+            <div className='mt-3'>
           <p>Hide Me On XS View Port Width.</p>
+          </div>
      </Item>
         </Grid>
          </Hidden>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={6} >
           <Item>
+            <div className='mt-5'>
            <BlockDisplay/>
+           </div>
           </Item>
         </Grid>
         <Hidden lgDown>
         <Grid item lg>
           <Item>
+            <div className='mt-3'>
             <FollewersCard/>
+            </div>
           </Item>
         </Grid>
         </Hidden>
